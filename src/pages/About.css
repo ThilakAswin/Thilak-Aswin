@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Uncial+Antiqua&family=Crimson+Text:ital,wght@0,400;0,600&display=swap');
+
+.about-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start; /* Align left */
+  align-items: center;
+  padding-left: 10%; /* Space from the left edge */
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25); /* Subtle overlay */
+  z-index: -1;
+}
+
+/* --- THE BOARD --- */
+.notice-board-wrapper {
+  position: relative;
+  z-index: 5;
+  width: 550px; /* Match parchment sheet */
+  animation: slideInLeft 1s ease-out;
+}
+
+.parchment-sheet {
+  position: relative;
+  width: 550px; /* Adjust width for the new background */
+  height: 750px; /* Adjust height for the new background */
+  background-size: contain; /* Ensure the whole image is visible */
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #3b2d1e; /* Darker text for readability */
+  padding: 100px 70px 80px 70px; /* Increased horizontal padding */
+  box-sizing: border-box; /* Ensures padding is included in the total dimensions */
+}
+
+
+.witcher-crest {
+    position: absolute;
+    top: 20px; /* Adjust for new, larger background */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px; /* Slightly larger */
+    height: auto;
+    mix-blend-mode: multiply; 
+    opacity: 0.8;
+}
+
+/* --- HEADERS --- */
+.notice-header {
+  text-align: center;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.notice-header h2 {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 3rem; /* Reduced font size */
+  margin: 0;
+  line-height: 1;
+  color: #1a0f08;
+  letter-spacing: 2px;
+  overflow-wrap: break-word; /* Ensure title wraps */
+}
+
+.sub-notice {
+  font-family: 'MedievalSharp', cursive;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #5c4033;
+}
+
+.divider-line {
+    border: 0;
+    height: 2px;
+    background: #2b1d0e;
+    margin: 15px 0;
+    opacity: 0.8;
+}
+
+/* --- PROFILE ROW --- */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.img-frame {
+  padding: 4px;
+  background: #fff;
+  border: 2px solid #2b1d0e;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
+}
+
+.profile-pic {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.3);
+}
+
+.info-text h1 {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.8rem; /* Reduced font size */
+  margin: 0 0 5px 0;
+}
+
+.info-text p {
+  font-family: 'MedievalSharp', cursive;
+  margin: 4px 0;
+  font-size: 1.1rem;
+  color: #3b2d1e; /* Match container color */
+}
+
+/* --- LORE & STATS --- */
+.lore-section h3 {
+  font-family: 'MedievalSharp', cursive;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-decoration: underline;
+}
+
+.handwritten-text {
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1rem; /* Reduced font size */
+  line-height: 1.3; /* More spacing */
+  margin: 0 3rem;
+  text-align: justify;
+  font-weight: normal; /* Uncial doesn't need bold */
+  overflow-wrap: break-word; /* Prevent overflow */
+}
+
+/* --- WAX SEAL --- */
+.wax-seal {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  background: #9e1b1b;
+  border-radius: 50%;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 2px 2px 5px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed rgba(255,255,255,0.2);
+  transform: rotate(15deg);
+  cursor: pointer;
+}
+
+.wax-seal-emblem {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0.8) contrast(1.2);
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding-left: 0;
+    justify-content: center;
+  }
+  .notice-board-wrapper {
+    width: 90%;
+  }
+}

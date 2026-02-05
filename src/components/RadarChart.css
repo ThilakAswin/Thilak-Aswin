@@ -1,0 +1,65 @@
+/* Container for the SVG - Ensure it is transparent */
+.radar-chart {
+  background: transparent; /* Removes the black box */
+  overflow: visible;
+  /* Optional: Adds a slight blur to lines to look like ink bleeding into paper */
+  filter: contrast(1.2); 
+}
+
+/* The concentric pentagon lines (Grid Levels) */
+.grid-level {
+  fill: transparent;
+  stroke: #5c4033; /* Dark brown ink */
+  stroke-width: 1px;
+  stroke-dasharray: 4; /* Makes grid lines dashed/sketchy */
+  opacity: 0.5;
+}
+
+/* The straight lines going from center to corners (Axes) */
+.grid-axis {
+  stroke: #5c4033; /* Dark brown ink */
+  stroke-width: 1px;
+  opacity: 0.3;
+}
+
+/* The Labels (STR, DEX, INT...) */
+.stat-label {
+  font-family: 'MedievalSharp', cursive; /* Matches your header font */
+  font-size: 14px;
+  fill: #3d0a0a; /* Darker, almost blood-dried ink color */
+  font-weight: bold;
+  text-shadow: 0px 0px 2px rgba(232, 223, 197, 0.8); /* Halo to read against lines */
+}
+
+/* The Main Shape (The filled area showing your stats) */
+.stat-shape {
+  fill: rgba(138, 28, 28, 0.2); /* Faint red wash, like watercolor */
+  stroke: #8a1c1c; /* Solid red/brown outline */
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  
+  /* Animation for loading */
+  animation: drawShape 1.5s ease-out forwards;
+}
+
+/* The dots at the corners of your stats */
+.stat-point {
+  fill: #e8dfc5; /* Matches paper color */
+  stroke: #8a1c1c;
+  stroke-width: 2px;
+}
+
+/* Optional: Animation to make it look like it's being drawn */
+@keyframes drawShape {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center;
+  }
+}

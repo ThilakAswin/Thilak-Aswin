@@ -1,0 +1,23 @@
+.hud-icon-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10001;
+  background: #232526;
+  border: 2px solid #00ff99;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,255,153,0.15);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.hud-icon-btn:hover, .hud-icon-btn.active {
+  background: #00ff99;
+  border-color: #232526;
+  color: #232526;
+  transform: scale(1.08);
+}

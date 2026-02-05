@@ -1,0 +1,172 @@
+/* FIFA-style Award Card Shape & Flip Effect */
+.award-card-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: center;
+	margin-top: 2rem;
+}
+.award-card {
+	width: 270px;
+	height: 430px;
+	background: linear-gradient(135deg, #fdeaa7 0%, #e1c072 100%);
+	color: #725b16;
+	position: relative;
+	cursor: pointer;
+	perspective: 800px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1.5px 0 #bfae6a;
+	border: 2.5px solid #bfae6a;
+	transition: transform 0.2s;
+}
+.award-card-inner {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+	transform-style: preserve-3d;
+}
+.award-card.flipped .award-card-inner {
+	transform: rotateY(180deg);
+}
+.award-card-front, .award-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1rem;
+	border-radius: 0;
+}
+.award-card-front {
+	background: linear-gradient(135deg, #fdeaa7 0%, #e1c072 100%);
+}
+.award-card-back {
+	background: linear-gradient(135deg, #232526 60%, #ffd700 100%);
+	color: #232526;
+	transform: rotateY(180deg);
+	padding: 0.5rem;
+}
+.award-icon {
+	font-size: 2.2rem;
+	margin-bottom: 0.7rem;
+}
+.award-label {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #232526;
+	text-shadow: 1px 1px 0 #bfae6a;
+}
+.award-desc {
+	font-size: 0.95rem;
+	color: #00ff99;
+	text-align: center;
+	padding: 0.5rem;
+}
+/* Awards/Badges/Flip Card Styles moved from Home.css */
+.achievements-section {
+	margin-bottom: 2.5rem;
+	text-align: center;
+}
+.section-title {
+	font-family: 'Press Start 2P', cursive;
+	color: #ffd700;
+	font-size: 1.3rem;
+	margin-bottom: 1rem;
+	text-shadow: 2px 2px 0 #222;
+}
+.badges-list {
+	display: flex;
+	justify-content: center;
+	gap: 1.2rem;
+	flex-wrap: wrap;
+}
+.badge {
+	background: linear-gradient(135deg, #232526 60%, #ffd700 100%);
+	border: 2px solid #ffd700;
+	border-radius: 12px;
+	padding: 1rem 1.2rem;
+	font-family: 'Press Start 2P', cursive;
+	color: #fff;
+	font-size: 1.1rem;
+	box-shadow: 0 2px 12px rgba(255,215,0,0.15);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	opacity: 0.7;
+	transform: scale(0.95);
+	transition: opacity 0.3s, transform 0.3s;
+	animation: badgePop 0.8s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+.badge.unlocked {
+	opacity: 1;
+	transform: scale(1.08);
+	border-color: #00ff99;
+	background: linear-gradient(135deg, #232526 60%, #00ff99 100%);
+}
+.badge-label {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+	color: #ffd700;
+	text-shadow: 1px 1px 0 #222;
+}
+@keyframes badgePop {
+	0% { opacity: 0; transform: scale(0.7); }
+	100% { opacity: 1; transform: scale(1.08); }
+}
+.flip-card {
+	perspective: 800px;
+	cursor: pointer;
+	width: 110px;
+	height: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0.5rem;
+}
+.flip-card-inner {
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0,255,153,0.15);
+	background: none;
+	transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+	transform-style: preserve-3d;
+	position: relative;
+}
+.flip-card.flipped .flip-card-inner {
+	transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1rem;
+	box-shadow: 0 2px 12px rgba(0,255,153,0.10);
+}
+.flip-card-front {
+	background: linear-gradient(135deg, #232526 60%, #00ff99 100%);
+	color: #ffd700;
+}
+.flip-card-back {
+	background: linear-gradient(135deg, #232526 60%, #ffd700 100%);
+	color: #232526;
+	transform: rotateY(180deg);
+	padding: 0.5rem;
+}
+.badge-desc {
+	font-size: 0.85rem;
+	color: #00ff99;
+	text-align: center;
+	padding: 0.5rem;
+}

@@ -1,0 +1,83 @@
+.hud-container {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  width: 340px;
+  background: rgba(34, 40, 49, 0.97);
+  border: 2px solid #00ff99;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  padding: 1.5rem 1rem;
+  z-index: 10002;
+  font-family: 'Press Start 2P', cursive;
+  color: #00ff99;
+  animation: floatHUD 1.2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+@keyframes floatHUD {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.hud-bar {
+  background: #222831;
+  border-radius: 8px;
+  height: 18px;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.hud-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff99 60%, #222831 100%);
+  border-radius: 8px;
+}
+.hud-label {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+.hud-stats {
+  margin-bottom: 1rem;
+}
+.hud-stat {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.hud-avatar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.hud-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 2px solid #00ff99;
+}
+.hud-avatar-info span {
+  display: block;
+  font-size: 0.9rem;
+}
+.hud-inventory {
+  margin-bottom: 1rem;
+}
+.hud-items span {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+.hud-quest-log {
+  margin-bottom: 1rem;
+}
+.hud-quest-log ul {
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+.hud-currency {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}

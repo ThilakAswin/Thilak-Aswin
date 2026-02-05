@@ -1,0 +1,137 @@
+.dialogue-box {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(30, 30, 40, 0.85);
+  border: 4px solid #fff176;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  padding: 1.5rem 2rem 1.5rem 1rem;
+  max-width: 700px;
+  margin: 2rem auto 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.dialogue-avatar {
+  margin-right: 1.2rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.dialogue-content {
+  color: #fff;
+  font-size: 1.15rem;
+  font-family: 'VT323', 'Consolas', monospace;
+  line-height: 1.7;
+  position: relative;
+}
+
+.dialogue-arrow {
+  color: #fff176;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url('../assets/among_us_video_game-wallpaper-5120x3840.jpg') center center/cover no-repeat, linear-gradient(135deg, #232526 0%, #414345 100%);
+  padding-top: 6rem;
+  position: relative;
+}
+
+.home-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55); /* Adjust opacity here */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.home-title {
+  font-family: 'Press Start 2P', cursive;
+  color: #00ff99;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.home-description {
+  color: #fff;
+  font-size: 1.25rem;
+  max-width: 700px;
+  text-align: center;
+  margin-top: 1.5rem;
+  background: rgba(0,0,0,0.6);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+
+.dialogue-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none; /* Prevents selecting text when clicking */
+}
+
+/* New: Title for the accordion header */
+.dialogue-title {
+  color: #fff176; /* Match the arrow color */
+  font-family: 'VT323', 'Consolas', monospace;
+  font-size: 1.5rem; /* Make it a bit larger */
+  margin: 0;
+  line-height: 1;
+}
+
+/* New: Wrapper for collapsible content (for framer-motion) */
+.dialogue-content-wrapper {
+  overflow: hidden; /* This is crucial for the height animation */
+}
+
+/* New: Expanded state for the arrow */
+.dialogue-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.dialogue-box {
+  display: block; /* CHANGED from flex */
+  background: rgba(30, 30, 40, 0.85);
+  border: 4px solid #fff176;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  padding: 1.5rem 2rem; /* CHANGED */
+  max-width: 700px;
+  margin: 2rem auto 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.dialogue-arrow {
+  color: #fff176;
+  font-size: 1.5rem;
+  margin-right: 0.75rem; /* Adjusted spacing */
+  transition: transform 0.2s ease-out; /* ADDED */
+  
+
+  display: inline-flex;  /* Make the span a flex container */
+  align-items: center;    /* Vertically center the text inside */
+  justify-content: center; /* Horizontally center (good practice) */
+  line-height: 1;         /* Prevent extra line-height from messing alignment */
+
+}
