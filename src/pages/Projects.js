@@ -8,6 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import './Projects.css';
+import LevelStartLoader from '../components/LevelStartLoader';
+import { preloadAssets } from '../utils/assetLoader';
 
 import projectImage1 from '../assets/red_dead_redemption_2_cowboy_western_video_game-wallpaper-2880x1800.jpg';
 import projectImage2 from '../assets/elden ring.jpg';
@@ -16,6 +18,16 @@ import projectImage4 from '../assets/for-honor-prince-of-5120x2880-22259.jpg';
 import projectImage5 from '../assets/Breaking-Bad-pizza.jpg';
 import bgImage from '../assets/neon-cyberpunk-corridor-jpg-aelixar6kbi1c2he.jpg';
 import navigationSound from '../assets/sfx/04. Src11 Decide Refine D.mp3';
+
+const assetsToLoad = [
+  projectImage1,
+  projectImage2,
+  projectImage3,
+  projectImage4,
+  projectImage5,
+  bgImage,
+  navigationSound,
+];
 
 const projectsData = [
   {
@@ -55,17 +67,27 @@ const StatBar = ({ label, value, maxValue, color }) => (
 );
 
 const Projects = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    if (isInitialMount.current) {
+    preloadAssets(assetsToLoad)
+      .then(() => setIsLoading(false))
+      .catch(err => {
+        console.error("Failed to load assets for Projects page", err);
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (isLoading || isInitialMount.current) {
       isInitialMount.current = false;
     } else {
       const audio = new Audio(navigationSound);
       audio.play();
     }
-  }, [activeIndex]);
+  }, [activeIndex, isLoading]);
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
@@ -76,6 +98,10 @@ const Projects = () => {
     e.stopPropagation();
     window.open(url, '_blank', 'noopener,noreferrer');
   };
+
+  if (isLoading) {
+    return <LevelStartLoader loadingText="Entering the Project Garage..." />;
+  }
 
   return (
     <div className="projects-container supercar-theme">

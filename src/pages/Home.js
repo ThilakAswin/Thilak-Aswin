@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
-// Import AnimatePresence from framer-motion
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Assuming Home.css is in the root 'src' folder like App.css
 import './Home.css';
 import AwardsSection from '../components/AwardsSection';
 import SkillTree from '../components/SkillTree';
 import HUDIcon from '../components/HUDIcon';
 import HUD from '../components/HUD';
+import LevelStartLoader from '../components/LevelStartLoader';
+import { preloadAssets } from '../utils/assetLoader';
+
+// Import the large background image to be preloaded
+import bgImage from '../assets/among_us_video_game-wallpaper-5120x3840.jpg';
+
+const assetsToLoad = [bgImage];
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showHUD, setShowHUD] = useState(false);
-  // State to manage if the accordion is open or closed
   const [isBioExpanded, setIsBioExpanded] = useState(false);
+
+  useEffect(() => {
+    preloadAssets(assetsToLoad)
+      .then(() => setIsLoading(false))
+      .catch(err => {
+        console.error("Failed to load assets for Home page", err);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <LevelStartLoader loadingText="Initializing Core Systems..." />;
+  }
 
   return (
     <div className="home-container">

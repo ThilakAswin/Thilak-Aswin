@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Contact.css';
+import LevelStartLoader from '../components/LevelStartLoader';
+import { preloadAssets } from '../utils/assetLoader';
 
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
 import { ReactComponent as EmailIcon } from '../assets/email.svg';
 import { ReactComponent as LinkedinIcon } from '../assets/linkedin.svg';
 import mypic from '../assets/mypic.jpg';
 import backgroundVideo from '../assets/red-deads-epic-journey.3840x2160.mp4';
+
+const assetsToLoad = [mypic, backgroundVideo];
 
 const items = [
   {
@@ -47,14 +51,26 @@ const itemVariants = {
 };
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [hoveredItem, setHoveredItem] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    preloadAssets(assetsToLoad)
+      .then(() => setIsLoading(false))
+      .catch(err => {
+        console.error("Failed to load assets for Contact page", err);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <LevelStartLoader loadingText="Establishing Contact..." />;
+  }
+
   return (
     <div className="contact-container">
-      <video autoPlay loop muted className="background-video">
-        <source src={backgroundVideo} type="video/mp4" />
-      </video>
+      <video src={backgroundVideo} autoPlay loop muted className="background-video" />
       <div className="weapon-wheel">
         <motion.div
           className="wheel-center"
@@ -99,4 +115,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
